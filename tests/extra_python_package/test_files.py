@@ -8,8 +8,8 @@ import subprocess
 import sys
 import tarfile
 import zipfile
+from collections.abc import Generator
 from pathlib import Path
-from typing import Generator
 
 # These tests must be run explicitly
 

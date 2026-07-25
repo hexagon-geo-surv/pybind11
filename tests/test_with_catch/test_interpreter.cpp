@@ -195,7 +195,6 @@ TEST_CASE("There can be only one interpreter") {
     py::initialize_interpreter();
 }
 
-#if PY_VERSION_HEX >= PYBIND11_PYCONFIG_SUPPORT_PY_VERSION_HEX
 TEST_CASE("Custom PyConfig") {
     py::finalize_interpreter();
     PyConfig config;
@@ -258,9 +257,8 @@ TEST_CASE("scoped_interpreter with PyConfig_InitPythonConfig and argv") {
     }
     py::initialize_interpreter();
 }
-#endif
 
-TEST_CASE("Add program dir to path pre-PyConfig") {
+TEST_CASE("Add program dir to path without PyConfig") {
     py::finalize_interpreter();
     size_t path_size_add_program_dir_to_path_false = 0;
     {
@@ -274,7 +272,6 @@ TEST_CASE("Add program dir to path pre-PyConfig") {
     py::initialize_interpreter();
 }
 
-#if PY_VERSION_HEX >= PYBIND11_PYCONFIG_SUPPORT_PY_VERSION_HEX
 TEST_CASE("Add program dir to path using PyConfig") {
     py::finalize_interpreter();
     size_t path_size_add_program_dir_to_path_false = 0;
@@ -292,7 +289,6 @@ TEST_CASE("Add program dir to path using PyConfig") {
     }
     py::initialize_interpreter();
 }
-#endif
 
 TEST_CASE("Restart the interpreter") {
     // Verify pre-restart state.
